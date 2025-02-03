@@ -39,6 +39,7 @@ public class AuthServices  extends APIServer {
             if (loginInfos == null){
                 return Response.status(Response.Status.UNAUTHORIZED).entity("Invalid user").build();
             }
+
             return Response.ok(loginInfos).build();
         } catch (Exception e){
             return Response.status(Response.Status.UNAUTHORIZED).entity("Exception found").build();

@@ -117,7 +117,7 @@ function RegisterPage() {
 
     return (
         <div className="flex justify-center items-center h-screen mx-20">
-            <div className="flex flex-col gap-8 h-fit justify-center border-2 p-10 rounded-2xl shadow-md">
+            <div className="flex flex-col gap-8 h-fit justify-center border-2 p-10 rounded-2xl shadow-md bg-white">
                 <div className="flex flex-col items-center">
                     <div className="h-[60px] mb-20">
                         <ImageComponent imageSource={logo}/>
@@ -140,7 +140,7 @@ function RegisterPage() {
                                 <>
                                     {error.confirmPassword && <span
                                         className="text-red-500 border-b-2 border-red-400 mb-4  ">{error.confirmPassword}</span>}
-                                    <InputComponent type="password" name="password" placeholder="Confirmar Senha"
+                                    <InputComponent type="password" name="password" placeholder="Senha"
                                                     value={input.password} onChange={onInputChange}
                                                     onBlur={validateInput}/>
                                     <FaEye className="absolute text-2xl right-0 cursor-pointer opacity-50"
@@ -150,7 +150,7 @@ function RegisterPage() {
                                 <>
                                     {error.confirmPassword && <span
                                         className="text-red-500 border-b-2 border-red-400 mb-4  ">{error.confirmPassword}</span>}
-                                    <InputComponent type="text" name="password" placeholder="Confirmar Senha"
+                                    <InputComponent type="text" name="password" placeholder="Senha"
                                                     value={input.password} onChange={onInputChange}
                                                     onBlur={validateInput}/>
                                     <FaEyeSlash className="absolute text-2xl right-0 cursor-pointer opacity-50"

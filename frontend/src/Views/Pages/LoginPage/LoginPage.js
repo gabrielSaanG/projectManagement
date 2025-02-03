@@ -53,6 +53,7 @@ function LoginPage(){
 
             if (response.status === 200){
                 console.log("Login bem sucedido")
+                window.location.href='main'
             }
         } catch (e){
             console.log("Erro de login", e)
@@ -63,7 +64,7 @@ function LoginPage(){
     }
 
     return (
-        <div className="flex items-center justify-center h-full">
+        <div className="flex items-center justify-center h-full bg-white">
             <div className="w-1/2">
                 <ImageComponent imageSource={sapiens}/>
             </div>
