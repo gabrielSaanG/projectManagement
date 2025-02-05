@@ -1,4 +1,13 @@
-export function ImageConverterToBase64(){
+export async function ImageConverterToBase64(image) {
+    fetch(image)
+        .then(response => response.arrayBuffer())
+        .then(buffer => {
+            return btoa(
+                new Uint8Array(buffer)
+                    .reduce((data, byte) =>
+                        data + String.fromCharCode(byte), '')
+            )
+        });
 
 }
 

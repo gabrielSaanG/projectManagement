@@ -48,4 +48,18 @@ async function getAllBooks() {
     }
 }
 
-export {postBook, getAllBooks}
+async function getBook(token) {
+    try{
+        const response = await axios.post('http://localhost:8231/api/book/get', token, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+
+        return response.data
+    } catch (e){
+        console.log("Couldn't get book information", e)
+    }
+}
+
+export {postBook, getAllBooks, getBook}

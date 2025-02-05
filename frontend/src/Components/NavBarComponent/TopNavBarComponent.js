@@ -9,26 +9,34 @@ import user from '../../Images/user.png'
 
 export default function TopNavBarComponent () {
     const [handleDropdown, setHandleDropdown] = useState(false)
-
+    const [profileDropdown, setProfileDropdown] = useState(false)
 
     const dropdownFunction = (e) => {
         setHandleDropdown(!handleDropdown)
     }
 
+    const profileDropdownFunction = (e) => {
+        setProfileDropdown(!profileDropdown)
+    }
 
     return (
-        <div className="flex justify-evenly mt-4">
+        <div className="flex justify-evenly h-fit">
             <div className="">
                 <ModalComponent>
                     <div className="mx-4 text-gray-800 ">
-                        <button className="relative  text-sm" onClick={dropdownFunction}>Filtrar</button>
-                        {handleDropdown && (
-                            <div className="absolute overflow-auto flex flex-col gap-4 mt-4 bg-white p-4 rounded-2xl shadow-md">
-                                <a className="border-b-2 border-gray-400 cursor-pointer">Todos</a>
-                                <a className="border-b-2 border-gray-400 cursor-pointer">Romance</a>
-                                <a className="border-b-2 border-gray-400 cursor-pointer">Drama</a>
-                            </div>
-                        )}
+                        <button className="text-sm" onClick={dropdownFunction}>Filtrar</button>
+
+                        <div className="relative left-[-30px]">
+                            {handleDropdown && (
+                                <div className="absolute overflow-auto flex flex-col gap-4 mt-4 bg-white p-4 rounded-2xl shadow-md">
+                                    <a className=" border-gray-400 cursor-pointer">Todos</a>
+                                    <a className=" border-gray-400 cursor-pointer">Romance</a>
+                                    <a className="border-gray-400 cursor-pointer">Drama</a>
+                                </div>
+                            )}
+                        </div>
+
+
 
 
                     </div>
@@ -54,16 +62,30 @@ export default function TopNavBarComponent () {
                 </ModalComponent>
             </div>
 
-            <div>
+            <div className="flex">
                 <ModalComponent>
-                    <div className="flex gap-3 items-center mx-2">
+                    <div className="flex gap-3 items-center mx-2 cursor-pointer " onClick={profileDropdownFunction}>
                         <div className="max-w-8">
                             <ImageComponent imageSource={user}/>
                         </div>
+
                         <div>
                             Gabriel
                         </div>
+
+                        <div className="relative left-[-100px] mt-10">
+                            {profileDropdown && (
+                                <div
+                                    className="absolute overflow-auto flex flex-col gap-4 mt-4 bg-white p-4 rounded-2xl shadow-md">
+                                    <a className=" border-gray-400 cursor-pointer">Todos</a>
+                                    <a className=" border-gray-400 cursor-pointer">Romance</a>
+                                    <a className="border-gray-400 cursor-pointer">Drama</a>
+                                </div>
+                            )}
+                        </div>
+
                     </div>
+
 
                 </ModalComponent>
             </div>

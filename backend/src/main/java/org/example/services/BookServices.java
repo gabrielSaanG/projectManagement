@@ -30,6 +30,23 @@ public class BookServices extends APIServer {
     }
 
     @POST
+    @Path("/get")
+    @Produces("application/json; charset=UTF-8")
+    public Response getBook(BookDTO book) {
+        try{
+            Query<BookDTO> query = datastore.createQuery(BookDTO.class).field("token").equal(book.getToken());
+            List<BookDTO> books = query.asList();
+            if (books == null || books.isEmpty()) {
+                System.out.println("teste");
+                return Response.status(404).build();
+            }
+            return Response.ok().entity(books).build();
+        } catch (Exception e) {
+            return Response.status(500).build();
+        }
+    }
+
+    @POST
     @Path("/post")
     public Response postBook(BookDTO book) {
         if (book.getToken() ==  0){

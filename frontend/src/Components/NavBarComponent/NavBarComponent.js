@@ -9,7 +9,7 @@ import { IoIosGift } from "react-icons/io";
 
 export default function NavBarComponent() {
     return (
-        <nav className="h-screen w-fit flex flex-col p-14 bg-white rounded">
+        <nav className="h-auto w-fit flex flex-col p-14 bg-white rounded">
             <div>
                 <ImageComponent imageSource={logo}/>
             </div>

@@ -21,7 +21,7 @@ public class CorsFilter implements Filter {
             return;
         }
 
-        chain.doFilter(req, res);
+        chain.doFilter(request, response);
     }
 
     public void init(FilterConfig filterConfig) throws ServletException {}
