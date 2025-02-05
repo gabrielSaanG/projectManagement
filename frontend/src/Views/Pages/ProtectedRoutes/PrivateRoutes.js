@@ -12,9 +12,21 @@ export const PrivateRoutes = () => {
 
 
     return (
-        auth.token ? <div className="flex flex-row ">
-            <NavBarComponent/>
-            <Outlet/>
-            </div> :  <Navigate to={'/'}/>
+        auth.token ?
+
+            <div>
+                <div>
+                    <div className="flex flex-row bg-gray-100">
+                        <NavBarComponent/>
+                        <div className="bg-gray-100 overflow-auto">
+                            <TopNavBarComponent/>
+                            <Outlet/>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div> : <Navigate to={'/'}/>
     )
 }
