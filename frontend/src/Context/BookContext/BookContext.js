@@ -6,8 +6,12 @@ const BookContext = createContext();
 export function BookContextProvider({children}){
     const [book, setBook] = useState([])
 
+    const [bookPage, setBookPage] = useState([])
+
+    const [filteredBooks, setFilteredBooks] = useState([])
+
     const getBookContext = (selectedBook) => {
-        setBook(selectedBook)
+        setBookPage(selectedBook)
     }
 
     useEffect(() => {
@@ -22,12 +26,12 @@ export function BookContextProvider({children}){
                 })
 
                 setBook([])
-
                 if (newBooks.length > 0){
                     for (const item of newBooks) {
                         setBook(prev => [...prev, item])
                     }
                 }
+                setFilteredBooks(newBooks)
                 console.log("contexto", response)
             } catch (e){
                 console.log(e)
@@ -40,7 +44,7 @@ export function BookContextProvider({children}){
 
 
     return (
-        <BookContext.Provider value={{book, getBookContext}}>
+        <BookContext.Provider value={{book, getBookContext, filteredBooks, setFilteredBooks, bookPage}}>
             {children}
         </BookContext.Provider>
     )

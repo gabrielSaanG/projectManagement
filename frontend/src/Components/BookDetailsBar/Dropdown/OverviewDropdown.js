@@ -2,7 +2,7 @@ import useBookContext from "../../../Context/BookContext/BookContext";
 
 export default function OverviewDropdown() {
 
-    const {book} = useBookContext();
+    const {bookPage} = useBookContext();
 
 
     return (
@@ -10,7 +10,7 @@ export default function OverviewDropdown() {
             <h1 className="text-xl font-semibold">Overview do Livro</h1>
             <div className="w-full">
                 <p className="font-semibold">Sinopse do livro:</p>
-                <p className="mt-4">{book.description}</p>
+                <p className="mt-4">{bookPage.description}</p>
             </div>
         </div>
     )

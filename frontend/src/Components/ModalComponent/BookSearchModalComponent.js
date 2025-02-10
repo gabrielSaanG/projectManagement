@@ -10,18 +10,18 @@ export default function BookSearchModalComponent({imageURL, title, author, date,
 
     return (
         <li
-            className="bg-white rounded-2xl flex text-sm pb-4 pt-4 px-4 mr-4 mt-4
-            cursor-pointer hover:scale-105 transition-all absolute h-max"
+            className="bg-white flex text-sm p-4
+            cursor-pointer hover:bg-gray-50 transition-all"
             onClick={redirect}>
-            <div className="flex">
-                <div className="max-w-[108px] max-h-[142px]">
+            <div className="h-fit w-fit">
+                <div className="max-w-[108px] max-h-[142px] w-20">
                     <ImageComponent imageSource={imageURL}/>
                 </div>
 
             </div>
 
-            <div className="flex gap-1 mt-3 flex-col text-gray-800 ">
-                <div className="overflow-hidden overflow-ellipsis font-semibold">
+            <div className="flex gap-1 mt-3 ml-4 flex-col text-gray-800 ">
+                <div className="font-semibold w-52">
                     <h1>{title}</h1>
                 </div>
                 <div className="flex flex-col">

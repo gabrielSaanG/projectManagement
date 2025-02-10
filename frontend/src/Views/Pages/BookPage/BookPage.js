@@ -17,12 +17,11 @@ import {motion} from "motion/react"
 export default function BookPage(){
     const params = useParams()
 
-    const [book, setBook] = useState({})
     const [author, setAuthor] = useState({})
 
     const [loading, setLoading] = useState(true)
 
-    const {getBookContext} = useBookContext()
+    const {getBookContext, bookPage} = useBookContext()
 
     const colors = {
         orange: "#F17316",
@@ -43,7 +42,6 @@ export default function BookPage(){
             try {
                 await getBook(token).then(async (resp) => {
                     await getAuthor(resp[0].author).then(async (resp2) => {
-                        setBook(resp[0])
                         getBookContext(resp[0])
                         setAuthor(resp2.data)
                     })
@@ -53,7 +51,7 @@ export default function BookPage(){
                 console.log(e)
             }
         }
-        if (book !== {}) {
+        if (bookPage !== {}) {
 
             setTimeout(() => {
                 fetchData()
@@ -78,7 +76,7 @@ export default function BookPage(){
                 <div className="p-8 bg-white rounded-2xl w-fit h-80 flex flex-col">
                     <div className="max-w-96 w-[130px] ">
                         {loading && <ImageCardSkeleton/>}
-                        <ImageComponent imageSource={"data:image/png;base64, " + book.imageURL}/>
+                        <ImageComponent imageSource={"data:image/png;base64, " + bookPage.imageURL}/>
                     </div>
 
                     <div className="flex justify-between h-full mt-4 items-center text-gray-600">
@@ -95,12 +93,12 @@ export default function BookPage(){
                 </div>
                 <div className="flex flex-col w-2/4 gap-2">
                     <div>
-                        <h1 className="text-3xl max-w- text-gray-800">{book.title || <Skeleton/>}</h1>
+                        <h1 className="text-3xl max-w- text-gray-800">{bookPage.title || <Skeleton/>}</h1>
                     </div>
 
                     <div>
                         <p className="text-gray-800">De <span
-                            className="underline cursor-pointer">{book.author}</span>, {book.date || <Skeleton/>}</p>
+                            className="underline cursor-pointer">{bookPage.author}</span>, {bookPage.date || <Skeleton/>}</p>
                     </div>
 
                     <div>
@@ -113,14 +111,14 @@ export default function BookPage(){
                                 <FaStar
                                     key={index}
                                     size={24}
-                                    color={(Math.round(book.rating)) > index ? colors.orange : colors.grey}
+                                    color={(Math.round(bookPage.rating)) > index ? colors.orange : colors.grey}
                                 />
                             )
                         }) }
 
                     </div>
                     <div className="flex text-gray-800 gap-6 w-max">
-                        <p className="">{book.rating || <Skeleton/>} Estrelas</p>
+                        <p className="">{bookPage.rating || <Skeleton/>} Estrelas</p>
                         <p className="text-gray-700">25 Lendo Agora</p>
                         <p className="text-gray-700" >119 Já Leram</p>
                     </div>
@@ -140,7 +138,7 @@ export default function BookPage(){
                         <div className="text-gray-700 w-fit gap-2 flex flex-col">
                             <h1 className="text-xl font-semibold "><span className="text-orange-500">Sobre</span> o
                                 Autor</h1>
-                            <h1 className="text-gray-600">{book.author || <Skeleton/>}</h1>
+                            <h1 className="text-gray-600">{bookPage.author || <Skeleton/>}</h1>
                         </div>
 
                         <div className="text-sm text-gray-700">
@@ -154,11 +152,11 @@ export default function BookPage(){
 
                             <div className="flex gap-4 w-1/2">
                                 <div className="hover:scale-110 transition-all cursor-pointer">
-                                    <ImageComponent imageSource={"data:image/png;base64, " + book.imageURL || <Skeleton/>}/>
+                                    <ImageComponent imageSource={"data:image/png;base64, " + bookPage.imageURL || <Skeleton/>}/>
                                 </div>
 
                                 <div className="hover:scale-110 transition-all cursor-pointer">
-                                    <ImageComponent imageSource={"data:image/png;base64, " + book.imageURL || <Skeleton/>}/>
+                                    <ImageComponent imageSource={"data:image/png;base64, " + bookPage.imageURL || <Skeleton/>}/>
                                 </div>
                             </div>
 
