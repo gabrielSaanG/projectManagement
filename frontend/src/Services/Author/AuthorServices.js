@@ -1,8 +1,6 @@
 import axios from "axios";
 
 async function getAuthor(authorName){
-
-
     const [firstName, lastName] = authorName.split(" ")
     const author = {
         firstName,
@@ -10,14 +8,13 @@ async function getAuthor(authorName){
     }
 
     try{
-        const response = await axios.get("localhost:8231/api/author/get", {data: author})
-
-        if (response.status === 200){
-            return response
-        }
-        else return response
+        return await axios.post("http://localhost:8231/api/author/get_author", author, {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
     } catch (e){
-        console.log(e)
+        throw new Error()
     }
 }
 

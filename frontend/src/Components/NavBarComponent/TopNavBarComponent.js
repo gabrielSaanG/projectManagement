@@ -6,10 +6,16 @@ import { CiClock2 } from "react-icons/ci";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import ImageComponent from "../ImageComponent/ImageComponent";
 import user from '../../Images/user.png'
+import useBookContext from "../../Context/BookContext/BookContext";
+import BookModalComponent from "../ModalComponent/BookModalComponent";
+import BookSearchModalComponent from "../ModalComponent/BookSearchModalComponent";
 
 export default function TopNavBarComponent () {
     const [handleDropdown, setHandleDropdown] = useState(false)
     const [profileDropdown, setProfileDropdown] = useState(false)
+    const [bookDropdown, setBookDropdown] = useState(false)
+    const {book} = useBookContext()
+
 
     const dropdownFunction = (e) => {
         setHandleDropdown(!handleDropdown)
@@ -17,6 +23,10 @@ export default function TopNavBarComponent () {
 
     const profileDropdownFunction = (e) => {
         setProfileDropdown(!profileDropdown)
+    }
+
+    const handleBookDropdown = (e) => {
+        setBookDropdown(!bookDropdown)
     }
 
     return (
@@ -40,7 +50,24 @@ export default function TopNavBarComponent () {
 
 
                     </div>
-                    <InputComponent placeholder="Pesquisar"/>
+                    <div onClick={handleBookDropdown}>
+                        <InputComponent placeholder="Pesquisar"/>
+                        {bookDropdown &&
+                        book.map((item) => {
+                            return (
+                                <div className="relative h-fit">
+                                    <ul className="absolute h-screen w-screen flex flex-col">
+                                        <BookSearchModalComponent imageURL={"data:image/png;base64, " + item.imageURL}
+                                                            title={item.title}
+                                                            author={item.author} date={item.date} rating={item.rating}
+                                                            token={item.token}/>
+                                    </ul>
+                                </div>
+                            )
+                        })
+                        }
+                    </div>
+
                     <IoSearch className="text-orange-500 text-2xl mr-4 ml-4"/>
                 </ModalComponent>
             </div>

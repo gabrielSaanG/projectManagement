@@ -13,10 +13,11 @@ public class BookDTO {
     private String date;
     private String rating;
     private String genre;
+    private String description;
 
     public BookDTO() {}
 
-    public BookDTO(String imageURL, String title, String author, String date, String rating, String genre, int token) {
+    public BookDTO(String imageURL, String title, String author, String date, String rating, String genre, int token, String description) {
         this.imageURL = imageURL;
         this.title = title;
         this.author = author;
@@ -24,6 +25,7 @@ public class BookDTO {
         this.rating = rating;
         this.genre = genre;
         this.token = token;
+        this.description = description;
     }
 
     public int getToken() {
@@ -88,5 +90,13 @@ public class BookDTO {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

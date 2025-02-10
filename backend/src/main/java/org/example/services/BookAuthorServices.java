@@ -28,8 +28,8 @@ public class BookAuthorServices extends APIServer {
         }
     }
 
-    @GET
-    @Path("/get")
+    @POST
+    @Path("/get_author")
     @Consumes("application/json; charset=UTF-8")
     @Produces("application/json; charset=UTF-8")
     public Response getAuthor(AuthorDTO authorDTO){

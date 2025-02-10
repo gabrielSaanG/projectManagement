@@ -1,5 +1,4 @@
 import axios from "axios";
-import {imageConverterToBase64} from "../../Utils/ImageConverter/ImageConverterToBase64";
 
 async function postBook(imageURL, title, author, date, rating, genre){
 
@@ -58,7 +57,7 @@ async function getBook(token) {
 
         return response.data
     } catch (e){
-        console.log("Couldn't get book information", e)
+        throw new Error()
     }
 }
 
